@@ -1,9 +1,8 @@
-// lib/main.dart
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:induccion_flutter/bindings/counter_binding.dart';
-import 'package:induccion_flutter/views/counter_page.dart';
 import 'package:get_storage/get_storage.dart';
+import 'bindings/user_binding.dart';
+import 'views/user_form_page.dart';
 
 void main() async {
   await GetStorage.init();
@@ -14,8 +13,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      initialBinding: CounterBinding(),
-      home: CounterPage(),
+      initialBinding: UserBinding(),
+      initialRoute: '/user_form',
+      getPages: [
+        GetPage(name: '/user_form', page: () => UserFormPage(), binding: UserBinding()),
+      ],
     );
   }
 }
