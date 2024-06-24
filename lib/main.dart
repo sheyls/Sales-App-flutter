@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:induccion_flutter/routes/routes.dart';
 
 void main() async {
   await GetStorage.init();
@@ -9,26 +11,13 @@ void main() async {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(),
-    );
-  }
-}
-
-class MyHomePage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Get Storage Demo'),
-      ),
-      body: Center(
-        child: Text('Hello World'),
-      ),
+      initialRoute: AppRoutes.loginScreen,
+      getPages: AppRoutes.pages,
     );
   }
 }

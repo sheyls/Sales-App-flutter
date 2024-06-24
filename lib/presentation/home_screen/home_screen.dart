@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:induccion_flutter/services/local_storage_service.dart';
+import 'package:induccion_flutter/presentation/login_screen/models/user_model.dart';
 
 class MyHomePage extends StatelessWidget {
   final storageService = LocalStorageService();
@@ -16,16 +17,26 @@ class MyHomePage extends StatelessWidget {
           children: [
             ElevatedButton(
               onPressed: () async {
-                await storageService.saveData('username', 'Sheyla');
+                UserModel user = UserModel(
+                  nombre: 'Sheyla',
+                  apellido: 'Leyva',
+                  email: 'sheyla@example.com',
+                  password: 'password123',
+                );
+                await storageService.saveUser(user);
               },
-              child: Text('Save Data'),
+              child: Text('Save User'),
             ),
             ElevatedButton(
               onPressed: () {
-                String? username = storageService.getData<String>('username');
-                print('Username: $username');
+                UserModel? user = storageService.getUser();
+                if (user != null) {
+                  print('User: ${user.nombre} ${user.apellido}, Email: ${user.email}');
+                } else {
+                  print('No user found');
+                }
               },
-              child: Text('Get Data'),
+              child: Text('Get User'),
             ),
           ],
         ),
