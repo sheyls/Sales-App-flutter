@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:induccion_flutter/presentation/login_screen/controller/login_controller.dart';
+import 'package:induccion_flutter/routes/routes.dart';
 
 class LoginScreen extends StatelessWidget {
   final LoginController controller = Get.put(LoginController());
@@ -9,26 +10,31 @@ class LoginScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Login'),
+        title: const Text('Login'),
       ),
       body: Padding(
-        padding: EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             TextField(
               controller: controller.emailController,
-              decoration: InputDecoration(labelText: 'Email'),
+              decoration: const InputDecoration(labelText: 'Email'),
             ),
             TextField(
               controller: controller.passwordController,
-              decoration: InputDecoration(labelText: 'Password'),
+              decoration: const InputDecoration(labelText: 'Password'),
               obscureText: true,
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             ElevatedButton(
-              onPressed: controller.login,
-              child: Text('Login'),
+              onPressed: () async {
+                final result = await controller.login();
+                if (result) {
+                  Get.toNamed(AppRoutes.saleNoteScreen);
+                }
+              },
+              child: const Text('Login'),
             ),
           ],
         ),

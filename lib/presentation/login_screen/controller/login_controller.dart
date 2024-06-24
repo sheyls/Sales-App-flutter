@@ -12,7 +12,7 @@ class LoginController extends GetxController {
 
   final AuthRepository authRepository = AuthService();
 
-  void login() async {
+  Future<bool> login() async {
     final email = emailController.text;
     final password = passwordController.text;
 
@@ -26,7 +26,7 @@ class LoginController extends GetxController {
       );
       storageService.saveUser(user);
       Get.snackbar('Login Successful', 'Welcome, ${user.nombre}!');
-
+      return true;
 
    // final result = await authRepository.login(email, password);
    // if (result['success']) {
@@ -34,6 +34,7 @@ class LoginController extends GetxController {
     } else {
    //  Get.snackbar('Login Failed', result['message']);
       Get.snackbar('Login Failed', 'Invalid email or password');
+      return false;
 
     }
   }
