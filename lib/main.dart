@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import 'bindings/user_binding.dart';
-import 'views/user_form_page.dart';
 
 void main() async {
   await GetStorage.init();
@@ -12,12 +9,26 @@ void main() async {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
-      initialBinding: UserBinding(),
-      initialRoute: '/user_form',
-      getPages: [
-        GetPage(name: '/user_form', page: () => UserFormPage(), binding: UserBinding()),
-      ],
+    return MaterialApp(
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: MyHomePage(),
+    );
+  }
+}
+
+class MyHomePage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Get Storage Demo'),
+      ),
+      body: Center(
+        child: Text('Hello World'),
+      ),
     );
   }
 }
