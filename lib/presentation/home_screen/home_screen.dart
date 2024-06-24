@@ -1,42 +1,25 @@
 import 'package:flutter/material.dart';
-import 'package:induccion_flutter/services/local_storage_service.dart';
-import 'package:induccion_flutter/presentation/login_screen/models/user_model.dart';
+import 'package:get/get.dart';
+import 'package:induccion_flutter/routes/routes.dart';
 
-class MyHomePage extends StatelessWidget {
-  final storageService = LocalStorageService();
-
+class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Get Storage Demo'),
+        title: const Text('Home'),
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             ElevatedButton(
-              onPressed: () async {
-                UserModel user = UserModel(
-                  nombre: 'Sheyla',
-                  apellido: 'Leyva',
-                  email: 'sheyla@example.com',
-                  password: 'password123',
-                );
-                await storageService.saveUser(user);
-              },
-              child: Text('Save User'),
+              onPressed: () => Get.toNamed(AppRoutes.saleNoteScreen),
+              child: const Text('Agregar Venta'),
             ),
             ElevatedButton(
-              onPressed: () {
-                UserModel? user = storageService.getUser();
-                if (user != null) {
-                  print('User: ${user.nombre} ${user.apellido}, Email: ${user.email}');
-                } else {
-                  print('No user found');
-                }
-              },
-              child: Text('Get User'),
+              onPressed: () => Get.toNamed(AppRoutes.saleNoteReportScreen),
+              child: const Text('Ver Reporte de Ventas'),
             ),
           ],
         ),

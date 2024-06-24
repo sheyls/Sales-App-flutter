@@ -31,7 +31,7 @@ class LoginScreen extends StatelessWidget {
               onPressed: () async {
                 final result = await controller.login();
                 if (result) {
-                  Get.toNamed(AppRoutes.saleNoteScreen);
+                  Get.toNamed(AppRoutes.homeScreen);
                 }
               },
               child: const Text('Login'),

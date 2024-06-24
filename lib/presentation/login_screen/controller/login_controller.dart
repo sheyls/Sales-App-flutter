@@ -4,6 +4,7 @@ import 'package:induccion_flutter/services/local_storage_service.dart';
 import 'package:induccion_flutter/presentation/login_screen/models/user_model.dart';
 import 'package:induccion_flutter/repositories/auth_repository.dart';
 import 'package:induccion_flutter/repositories/auth_repository_imp.dart';
+import 'package:induccion_flutter/routes/routes.dart';
 
 class LoginController extends GetxController {
   final emailController = TextEditingController();
@@ -26,6 +27,7 @@ class LoginController extends GetxController {
       );
       storageService.saveUser(user);
       Get.snackbar('Login Successful', 'Welcome, ${user.nombre}!');
+      Get.offNamed(AppRoutes.homeScreen);
       return true;
 
    // final result = await authRepository.login(email, password);
