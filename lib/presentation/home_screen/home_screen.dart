@@ -7,7 +7,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Home'),
+        title: const Text('Bienvenid@ a Sales App'),
       ),
       body: Center(
         child: Column(
@@ -17,6 +17,7 @@ class HomeScreen extends StatelessWidget {
               onPressed: () => Get.toNamed(AppRoutes.saleNoteScreen),
               child: const Text('Agregar Venta'),
             ),
+            const SizedBox(height: 20), // Añade espacio entre los botones
             ElevatedButton(
               onPressed: () => Get.toNamed(AppRoutes.saleNoteReportScreen),
               child: const Text('Ver Reporte de Ventas'),
