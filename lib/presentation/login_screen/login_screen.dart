@@ -34,11 +34,19 @@ class LoginScreen extends StatelessWidget {
                       decoration: const InputDecoration(labelText: 'Email'),
                     ),
                     const SizedBox(height: 16),
-                    TextField(
-                      controller: controller.passwordController,
-                      decoration: InputDecoration(labelText: 'password'.tr),
-                      obscureText: true,
-                    ),
+                    Obx(() => TextField(
+                          controller: controller.passwordController,
+                          decoration: InputDecoration(
+                            labelText: 'password'.tr,
+                            suffixIcon: IconButton(
+                              icon: Icon(controller.isPasswordVisible.value
+                                  ? Icons.visibility
+                                  : Icons.visibility_off),
+                              onPressed: controller.togglePasswordVisibility,
+                            ),
+                          ),
+                          obscureText: !controller.isPasswordVisible.value,
+                        )),
                     const SizedBox(height: 20),
                     ElevatedButton(
                       onPressed: () async {

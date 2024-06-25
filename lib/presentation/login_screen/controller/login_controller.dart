@@ -10,6 +10,7 @@ class LoginController extends GetxController {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   final LocalStorageService storageService = LocalStorageService();
+  var isPasswordVisible = false.obs;
 
   final AuthRepository authRepository = AuthService();
 
@@ -40,4 +41,9 @@ class LoginController extends GetxController {
 
     }
   }
+
+    void togglePasswordVisibility() {
+    isPasswordVisible.value = !isPasswordVisible.value;
+  }
+  
 }
