@@ -9,83 +9,83 @@ class SaleNoteScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Create Sale Note'),
+        title: Text('create_sales_note'.tr),
       ),
       body: SingleChildScrollView(
-        padding: const EdgeInsets.all(16.0),
+        padding: EdgeInsets.all(16.0),
         child: Column(
           children: [
             TextField(
               controller: controller.nombreEmpresaController,
-              decoration: const InputDecoration(labelText: 'Nombre Empresa'),
+              decoration: InputDecoration(labelText: 'nombre_empresa'.tr),
             ),
             TextField(
               controller: controller.rutController,
-              decoration: const InputDecoration(labelText: 'Rut'),
+              decoration: InputDecoration(labelText: 'rut'.tr),
             ),
             TextField(
               controller: controller.direccionController,
-              decoration: const InputDecoration(labelText: 'Dirección'),
+              decoration: InputDecoration(labelText: 'direccion'.tr),
             ),
             TextField(
               controller: controller.giroController,
-              decoration: const InputDecoration(labelText: 'Giro'),
+              decoration: InputDecoration(labelText: 'giro'.tr),
             ),
             TextField(
               controller: controller.netoController,
-              decoration: const InputDecoration(labelText: 'Neto'),
+              decoration: InputDecoration(labelText: 'neto'.tr),
               keyboardType: TextInputType.number,
             ),
             TextField(
               controller: controller.ivaController,
-              decoration: const InputDecoration(labelText: 'IVA'),
+              decoration: InputDecoration(labelText: 'iva'.tr),
               keyboardType: TextInputType.number,
             ),
             TextField(
               controller: controller.totalController,
-              decoration: const InputDecoration(labelText: 'Total'),
+              decoration: InputDecoration(labelText: 'total'.tr),
               keyboardType: TextInputType.number,
             ),
-            const SizedBox(height: 20),
+            SizedBox(height: 20),
             TextField(
               controller: controller.skuController,
-              decoration: const InputDecoration(labelText: 'SKU'),
+              decoration: InputDecoration(labelText: 'sku'.tr),
             ),
             TextField(
               controller: controller.nombreProductoController,
-              decoration: const InputDecoration(labelText: 'Nombre Producto'),
+              decoration: InputDecoration(labelText: 'nombre_producto'.tr),
             ),
             TextField(
               controller: controller.cantidadController,
-              decoration: const InputDecoration(labelText: 'Cantidad'),
+              decoration: InputDecoration(labelText: 'cantidad'.tr),
               keyboardType: TextInputType.number,
             ),
             TextField(
               controller: controller.detalleNetoController,
-              decoration: const InputDecoration(labelText: 'Neto'),
+              decoration: InputDecoration(labelText: 'neto'.tr),
               keyboardType: TextInputType.number,
             ),
             TextField(
               controller: controller.detalleIvaController,
-              decoration: const InputDecoration(labelText: 'IVA'),
+              decoration: InputDecoration(labelText: 'iva'.tr),
               keyboardType: TextInputType.number,
             ),
             TextField(
               controller: controller.detalleTotalController,
-              decoration: const InputDecoration(labelText: 'Total'),
+              decoration: InputDecoration(labelText: 'total'.tr),
               keyboardType: TextInputType.number,
             ),
-            const SizedBox(height: 20),
+            SizedBox(height: 20),
             ElevatedButton(
               onPressed: controller.addDetalle,
-              child: const Text('Agregar Detalle'),
+              child: Text('agregar_detalle'.tr),
             ),
-            const SizedBox(height: 20),
+            SizedBox(height: 20),
             ElevatedButton(
               onPressed: controller.saveSaleNote,
-              child: const Text('Guardar Nota de Venta'),
+              child: Text('guardar_nota_venta'.tr),
             ),
-            const SizedBox(height: 20),
+            SizedBox(height: 20),
             Obx(() {
               return ListView.builder(
                 shrinkWrap: true,
@@ -94,7 +94,9 @@ class SaleNoteScreen extends StatelessWidget {
                   final detalle = controller.detalles[index];
                   return ListTile(
                     title: Text(detalle.nombreProducto),
-                    subtitle: Text('Cantidad: ${detalle.cantidad}, Neto: ${detalle.neto}, IVA: ${detalle.iva}, Total: ${detalle.total}'),
+                    subtitle: Text(
+                      '${'cantidad'.tr}: ${detalle.cantidad}, ${'neto'.tr}: ${detalle.neto}, ${'iva'.tr}: ${detalle.iva}, ${'total'.tr}: ${detalle.total}'
+                    ),
                   );
                 },
               );

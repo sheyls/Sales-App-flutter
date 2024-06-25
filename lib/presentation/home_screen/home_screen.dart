@@ -15,12 +15,12 @@ class HomeScreen extends StatelessWidget {
           children: [
             ElevatedButton(
               onPressed: () => Get.toNamed(AppRoutes.saleNoteScreen),
-              child: const Text('Agregar Venta'),
+              child: Text('add_sale'.tr),
             ),
             const SizedBox(height: 20), // Añade espacio entre los botones
             ElevatedButton(
               onPressed: () => Get.toNamed(AppRoutes.saleNoteReportScreen),
-              child: const Text('Ver Reporte de Ventas'),
+              child: Text('view_report'.tr),
             ),
           ],
         ),

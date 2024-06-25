@@ -34,7 +34,7 @@ class SaleNoteController extends GetxController {
       detalles.add(detalle);
       clearDetalleFields();
     } catch (e) {
-      Get.snackbar('Error', 'Invalid input. Please enter valid numbers for quantity, neto, iva, and total.');
+      Get.snackbar('error'.tr, 'invalid_input'.tr);
     }
   }
 
@@ -61,9 +61,9 @@ class SaleNoteController extends GetxController {
       );
 
       await storageService.saveData('sale_note_${DateTime.now().millisecondsSinceEpoch}', saleNote.toJson());
-      Get.snackbar('Success', 'Sale note saved successfully');
+      Get.snackbar('success'.tr, 'sale_note_saved'.tr);
     } catch (e) {
-      Get.snackbar('Error', 'Invalid input. Please enter valid numbers for neto, iva, and total.');
+      Get.snackbar('error'.tr, 'invalid_input'.tr);
     }
   }
 }

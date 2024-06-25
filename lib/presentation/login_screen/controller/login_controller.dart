@@ -26,7 +26,7 @@ class LoginController extends GetxController {
         password: password,
       );
       storageService.saveUser(user);
-      Get.snackbar('Login Successful', 'Welcome, ${user.nombre}!');
+      Get.snackbar('login'.tr, 'login_success'.tr);
       Get.offNamed(AppRoutes.homeScreen);
       return true;
 
@@ -35,7 +35,7 @@ class LoginController extends GetxController {
    //   Get.snackbar('Login Successful', 'Welcome!');
     } else {
    //  Get.snackbar('Login Failed', result['message']);
-      Get.snackbar('Login Failed', 'Invalid email or password');
+      Get.snackbar('Error', 'login_failed'.tr);
       return false;
 
     }
