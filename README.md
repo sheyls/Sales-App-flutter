@@ -1,6 +1,6 @@
 # Flutter Induction Project "Sales App"
 
-![logo](https://github.com/sheyls/Sales-App-flutter/assets/70074598/ad89d052-fadc-4310-8ed6-95717229b39b)
+<img src="https://github.com/sheyls/Sales-App-flutter/assets/70074598/ad89d052-fadc-4310-8ed6-95717229b39b" alt="logo" width="200"/>
 
 This project is a Flutter application that connects to a PHP API using Ngrok to handle user login. The application includes authentication, sales notes management, and sales reports functionalities.
 
