@@ -17,7 +17,7 @@ class HomeScreen extends StatelessWidget {
               onPressed: () => Get.toNamed(AppRoutes.saleNoteScreen),
               child: Text('add_sale'.tr),
             ),
-            const SizedBox(height: 20), // Añade espacio entre los botones
+            const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () => Get.toNamed(AppRoutes.saleNoteReportScreen),
               child: Text('view_report'.tr),

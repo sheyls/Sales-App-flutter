@@ -33,6 +33,7 @@ dependencies:
   get: ^4.3.8
   get_storage: ^2.0.3
   http: ^0.13.4
+  dio:
 
 
   # The following adds the Cupertino Icons font to your application.

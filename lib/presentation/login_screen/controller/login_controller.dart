@@ -1,36 +1,35 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:induccion_flutter/services/local_storage_service.dart';
-//import 'package:induccion_flutter/presentation/login_screen/models/user_model.dart';
+import 'package:induccion_flutter/repositories/auth_repository_Imp.dart';
 import 'package:induccion_flutter/repositories/auth_repository.dart';
-import 'package:induccion_flutter/repositories/auth_repository_imp.dart';
 import 'package:induccion_flutter/routes/routes.dart';
+import 'package:get_storage/get_storage.dart';
 
 class LoginController extends GetxController {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
-  final LocalStorageService storageService = LocalStorageService();
+  GetStorage storage = GetStorage();
   var isPasswordVisible = false.obs;
 
-  final AuthRepository authRepository = AuthService();
+  final AuthRepository authRepository = AuthRepositoryImpl();
 
   Future<bool> login() async {
     final email = emailController.text;
     final password = passwordController.text;
+    final response = await authRepository.login(email, password);
 
-    final result = await authRepository.login(email, password);
-    if (result['success']) {
-      // Guardar usuario en almacenamiento local si es necesario
-      if (result.containsKey('user')) {
-        await storageService.saveUser(result['user']);
+    if (response['token'] != null) {
+        storage.write('token', response['token']);
+        storage.write('userName', response['user']['name']);
+        storage.write('userId', response['user']['id']);
+        Get.snackbar('login'.tr, 'login_success'.tr);
+        Get.offAllNamed(AppRoutes.homeScreen);
+        return true;
+      } else {
+        print('Token not found in response');
+        Get.snackbar('Error', 'login_failed'.tr);
+        return false;
       }
-      Get.snackbar('login'.tr, 'login_success'.tr);
-      Get.offNamed(AppRoutes.homeScreen);
-      return true;
-    } else {
-      Get.snackbar('Error', 'login_failed'.tr);
-      return false;
-    }
   }
 
   void togglePasswordVisibility() {
