@@ -1,37 +1,31 @@
 class UserModel {
-  String nombre;
-  String apellido;
-  String email;
-  String password;
-  String? token;
+  final int id;
+  final String name;
+  final String email;
+  final String token;
 
   UserModel({
-    required this.nombre,
-    required this.apellido,
+    required this.id,
+    required this.name,
     required this.email,
-    required this.password,
-    this.token,
+    required this.token,
   });
 
-  // Convert UserModel to JSON
-  Map<String, dynamic> toJson() {
-    return {
-      'nombre': nombre,
-      'apellido': apellido,
-      'email': email,
-      'password': password,
-      'token': token,
-    };
-  }
-
-  // Create a UserModel from JSON
   factory UserModel.fromJson(Map<String, dynamic> json) {
     return UserModel(
-      nombre: json['nombre'],
-      apellido: json['apellido'],
+      id: json['id'],
+      name: json['name'],
       email: json['email'],
-      password: json['password'],
       token: json['token'],
     );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'name': name,
+      'email': email,
+      'token': token,
+    };
   }
 }

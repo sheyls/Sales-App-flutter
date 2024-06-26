@@ -14,12 +14,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      title: 'Flutter Demo',
+      title: 'Sales App',
       theme: AppTheme.theme,
       initialRoute: AppRoutes.loginScreen,
       getPages: AppRoutes.pages,
-      locale: Locale('es', 'CL'),
-      fallbackLocale: Locale('es', 'CL'),
+      locale: const Locale('es', 'CL'),
+      fallbackLocale: const Locale('es', 'CL'),
       translations: AppLocalization(),
     );
   }
